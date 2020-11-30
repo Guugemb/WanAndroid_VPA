@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">WanAndroid_VPA</string>
+    <string name="bottom_mainPage">首页</string>
+    <string name="qa">问答</string>
+    <string name="discover">探索</string>
+    <string name="mine">我的</string>
 </resources>

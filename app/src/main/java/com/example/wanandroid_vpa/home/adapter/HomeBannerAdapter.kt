@@ -10,6 +10,7 @@ import com.example.wanandroid_vpa.R
 import com.example.wanandroid_vpa.base.BaseHolder
 import com.example.wanandroid_vpa.home.bean.BannerBeanWrapper.BannerBean
 import com.example.wanandroid_vpa.home.adapter.HomeBannerAdapter.BannerHolder
+import com.example.wanandroid_vpa.util.ScreenUtils
 
 /**
  * Created by geegumb on 2020/12/1
@@ -21,6 +22,9 @@ class HomeBannerAdapter : RecyclerView.Adapter<BannerHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BannerHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_banner_home, parent
             , false)
+        val params = view.layoutParams
+        params.width = ScreenUtils.getScreenWidth(view.context)
+        view.layoutParams = params
         return BannerHolder(view)
     }
 

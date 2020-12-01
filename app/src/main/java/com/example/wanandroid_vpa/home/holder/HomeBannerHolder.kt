@@ -1,6 +1,10 @@
 package com.example.wanandroid_vpa.home.holder
 
 import android.view.View
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearSnapHelper
+import androidx.recyclerview.widget.PagerSnapHelper
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.wanandroid_vpa.R
@@ -17,7 +21,11 @@ class HomeBannerHolder(v: View): BaseHolder<Any>(v) {
     private val mBannerAdapter = HomeBannerAdapter()
 
     init {
-        v.findViewById<ViewPager2>(R.id.vpBanner).adapter = mBannerAdapter
+        val recyclerView = v.findViewById<RecyclerView>(R.id.vpBanner)
+        recyclerView.adapter = mBannerAdapter
+        recyclerView.layoutManager = LinearLayoutManager(v.context, RecyclerView.HORIZONTAL,
+            false)
+        PagerSnapHelper().attachToRecyclerView(recyclerView)
     }
     override fun bind(t: Any) {
         if (t is List<*>) {

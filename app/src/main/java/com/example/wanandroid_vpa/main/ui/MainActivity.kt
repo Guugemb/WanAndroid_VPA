@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         mFragments.addAll(listOf(HomeFragment.newInstance()))
         mPagerAdapter.addFragments(mFragments)
         vpMain.adapter = mPagerAdapter
+        vpMain.isUserInputEnabled = false
     }
 
     private fun initView() {
@@ -36,6 +37,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.rbMine -> checkAndSwitch(R.id.rbMine, 3)
             }
         }
+        radioGroup_bottom.check(R.id.rbMainPage)
     }
 
     private fun checkAndSwitch(@IdRes tab: Int, position: Int) {

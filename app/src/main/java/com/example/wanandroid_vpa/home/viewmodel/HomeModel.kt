@@ -22,7 +22,7 @@ class HomeModel : ViewModel() {
         viewModelScope.launch { mBannerBeanList.value = mRepository.requestBanner() }
     }
 
-    fun requestArticle() {
-
+    fun requestArticle(page: Int) {
+        viewModelScope.launch { mArticleBeanList.value = mRepository.requestArticle(page) }
     }
 }

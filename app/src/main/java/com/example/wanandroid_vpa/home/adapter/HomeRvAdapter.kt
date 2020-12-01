@@ -7,7 +7,7 @@ import com.example.wanandroid_vpa.R
 import com.example.wanandroid_vpa.base.BaseHolder
 import com.example.wanandroid_vpa.home.bean.ArticleBean
 import com.example.wanandroid_vpa.home.bean.BannerBeanWrapper.BannerBean
-import com.example.wanandroid_vpa.home.holder.HomeArticleListHolder
+import com.example.wanandroid_vpa.home.holder.HomeArticleItemHolder
 import com.example.wanandroid_vpa.home.holder.HomeBannerHolder
 import java.lang.IllegalStateException
 
@@ -27,9 +27,9 @@ class HomeRvAdapter: RecyclerView.Adapter<BaseHolder<Any>>() {
                 HomeBannerHolder(view)
             }
             TYPE_ITEM_RECYCLER_VIEW -> {
-                val view = LayoutInflater.from(parent.context).inflate(R.layout.item_rv_rv_home,
+                val view = LayoutInflater.from(parent.context).inflate(R.layout.item_home_article_rcv,
                     parent, false)
-                HomeArticleListHolder(view)
+                HomeArticleItemHolder(view)
             }
             else -> throw IllegalStateException("unsupported view type")
         }
@@ -57,8 +57,7 @@ class HomeRvAdapter: RecyclerView.Adapter<BaseHolder<Any>>() {
     fun addArticles(articleList: List<ArticleBean>?) {
         articleList?.forEach {
             mDataList.add(Wrapper(it, TYPE_ITEM_RECYCLER_VIEW))
-        }
-        notifyDataSetChanged()
+        }.also { notifyDataSetChanged()}
     }
 
     internal data class Wrapper(var data: Any, var type: Int)

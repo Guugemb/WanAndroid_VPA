@@ -38,11 +38,15 @@ class HomeFragment: Fragment() {
         mViewModel.mBannerBeanList.observe(this, {
             mAdapter.addBanners(it)
         })
+        mViewModel.mArticleBeanList.observe(this, {
+            mAdapter.addArticles(it)
+        })
         requestData()
     }
 
     private fun requestData() {
         mViewModel.requestBanner()
+        mViewModel.requestArticle(0)
     }
 
     companion object {

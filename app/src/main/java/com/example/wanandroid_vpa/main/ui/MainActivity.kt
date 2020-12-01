@@ -6,7 +6,7 @@ import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import com.example.wanandroid_vpa.main.adapter.MainPagerAdapter
 import com.example.wanandroid_vpa.R
-import com.example.wanandroid_vpa.home.HomeFragment
+import com.example.wanandroid_vpa.home.fragment.HomeFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

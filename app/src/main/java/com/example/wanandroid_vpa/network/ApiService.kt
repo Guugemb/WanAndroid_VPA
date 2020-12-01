@@ -1,6 +1,6 @@
 package com.example.wanandroid_vpa.network
 
-import com.example.wanandroid_vpa.home.BannerBeanWrapper
+import com.example.wanandroid_vpa.home.bean.BannerBeanWrapper
 import retrofit2.http.GET
 
 /**

@@ -1,11 +1,14 @@
-package com.example.wanandroid_vpa.home
+package com.example.wanandroid_vpa.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wanandroid_vpa.R
 import com.example.wanandroid_vpa.base.BaseHolder
-import com.example.wanandroid_vpa.home.BannerBeanWrapper.BannerBean
+import com.example.wanandroid_vpa.home.bean.ArticleBean
+import com.example.wanandroid_vpa.home.bean.BannerBeanWrapper.BannerBean
+import com.example.wanandroid_vpa.home.holder.HomeArticleListHolder
+import com.example.wanandroid_vpa.home.holder.HomeBannerHolder
 import java.lang.IllegalStateException
 
 /**

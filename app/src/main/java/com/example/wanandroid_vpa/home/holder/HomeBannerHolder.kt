@@ -1,10 +1,12 @@
-package com.example.wanandroid_vpa.home
+package com.example.wanandroid_vpa.home.holder
 
 import android.view.View
 import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
+import com.example.wanandroid_vpa.R
 import com.example.wanandroid_vpa.base.BaseHolder
-import com.example.wanandroid_vpa.home.BannerBeanWrapper.BannerBean
-import com.example.wanandroid_vpa.home.HomeRvAdapter.Wrapper
+import com.example.wanandroid_vpa.home.adapter.HomeBannerAdapter
+import com.example.wanandroid_vpa.home.bean.BannerBeanWrapper.BannerBean
 
 /**
  * Created by geegumb on 2020/11/30
@@ -15,7 +17,7 @@ class HomeBannerHolder(v: View): BaseHolder<Any>(v) {
     private val mBannerAdapter = HomeBannerAdapter()
 
     init {
-        (v as ViewPager).adapter = mBannerAdapter
+        v.findViewById<ViewPager2>(R.id.vpBanner).adapter = mBannerAdapter
     }
     override fun bind(t: Any) {
         if (t is List<*>) {

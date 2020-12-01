@@ -1,4 +1,4 @@
-package com.example.wanandroid_vpa.home
+package com.example.wanandroid_vpa.home.repository
 
 import com.example.wanandroid_vpa.network.NetworkService
 import kotlinx.coroutines.Dispatchers
@@ -12,6 +12,7 @@ import kotlinx.coroutines.withContext
 class HomeRepository {
 
     suspend fun requestBanner() = withContext(Dispatchers.IO) {
-        async { NetworkService.apiService.getBanner() }
-    }.await()
+        val deffered = async { NetworkService.apiService.getBanner() }
+        return@withContext deffered.await().data
+    }
 }

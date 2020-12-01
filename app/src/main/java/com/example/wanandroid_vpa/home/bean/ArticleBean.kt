@@ -1,4 +1,4 @@
-package com.example.wanandroid_vpa.home
+package com.example.wanandroid_vpa.home.bean
 
 /**
  * Created by geegumb on 2020/11/30

@@ -1,9 +1,11 @@
-package com.example.wanandroid_vpa.home
+package com.example.wanandroid_vpa.home.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.wanandroid_vpa.home.BannerBeanWrapper.BannerBean
+import com.example.wanandroid_vpa.home.bean.ArticleBean
+import com.example.wanandroid_vpa.home.bean.BannerBeanWrapper.BannerBean
+import com.example.wanandroid_vpa.home.repository.HomeRepository
 import kotlinx.coroutines.launch
 
 /**
@@ -17,7 +19,7 @@ class HomeModel : ViewModel() {
     private val mRepository = HomeRepository()
 
     fun requestBanner() {
-        viewModelScope.launch { mBannerBeanList.value = mRepository.requestBanner().bannerBeanList }
+        viewModelScope.launch { mBannerBeanList.value = mRepository.requestBanner() }
     }
 
     fun requestArticle() {

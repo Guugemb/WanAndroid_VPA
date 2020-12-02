@@ -21,11 +21,7 @@ class HomeBannerHolder(v: View): BaseHolder<Any>(v) {
     private val mBannerAdapter = HomeBannerAdapter()
 
     init {
-        val recyclerView = v.findViewById<RecyclerView>(R.id.vpBanner)
-        recyclerView.adapter = mBannerAdapter
-        recyclerView.layoutManager = LinearLayoutManager(v.context, RecyclerView.HORIZONTAL,
-            false)
-        PagerSnapHelper().attachToRecyclerView(recyclerView)
+        v.findViewById<ViewPager2>(R.id.vpBanner).adapter = mBannerAdapter
     }
     override fun bind(t: Any) {
         if (t is List<*>) {

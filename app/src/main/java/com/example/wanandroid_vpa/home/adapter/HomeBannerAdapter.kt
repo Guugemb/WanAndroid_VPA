@@ -20,11 +20,10 @@ class HomeBannerAdapter : RecyclerView.Adapter<BannerHolder>() {
     private val mBannerBeans = arrayListOf<BannerBean>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BannerHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_banner_home, parent
-            , false)
-        val params = view.layoutParams
-        params.width = ScreenUtils.getScreenWidth(view.context)
-        view.layoutParams = params
+        val view = LayoutInflater.from(parent.context).inflate(
+            R.layout.item_banner_home, parent, false
+        )
+        (view as ImageView).maxWidth = ScreenUtils.getScreenWidth(view.context)
         return BannerHolder(view)
     }
 
@@ -47,9 +46,7 @@ class HomeBannerAdapter : RecyclerView.Adapter<BannerHolder>() {
         var mView: View = v
 
         override fun bind(t: BannerBean) {
-            val iv = mView.findViewById<ImageView>(R.id.ivBanner)
-            Glide.with(iv).load(t.imagePath).into(iv)
+            Glide.with(mView).load(t.imagePath).into(mView as ImageView)
         }
     }
-
 }

@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wanandroid_vpa.R
+import com.example.wanandroid_vpa.ext.addOnLoadMoreListener
 import com.example.wanandroid_vpa.home.adapter.HomeRvAdapter
 import com.example.wanandroid_vpa.home.viewmodel.HomeModel
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -32,8 +33,12 @@ class HomeFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         rcv_home.adapter = mAdapter
         rcv_home.layoutManager = LinearLayoutManager(context)
+        rcv_home.addOnLoadMoreListener { mViewModel.requestArticle() }
+        srl_home.setOnRefreshListener { refresh() }
+
         mViewModel = ViewModelProvider(this).get(HomeModel::class.java)
         mViewModel.mBannerBeanList.observe(this, {
             mAdapter.addBanners(it)
@@ -44,9 +49,23 @@ class HomeFragment: Fragment() {
         requestData()
     }
 
+    private fun refresh() {
+        mAdapter.removeBanners()
+        mAdapter.removeArticles()
+        mViewModel.mCurrentArticlePage = 0
+        srl_home.isRefreshing = true
+        try {
+            requestData()
+        } catch (t: Throwable) {
+            t.printStackTrace()
+        } finally {
+            srl_home.isRefreshing = false
+        }
+    }
+
     private fun requestData() {
         mViewModel.requestBanner()
-        mViewModel.requestArticle(0)
+        mViewModel.requestArticle()
     }
 
     companion object {

@@ -60,6 +60,17 @@ class HomeRvAdapter: RecyclerView.Adapter<BaseHolder<Any>>() {
         }.also { notifyDataSetChanged()}
     }
 
+    fun removeBanners() {
+        if (mDataList[0].data is List<*>) mDataList.removeAt(0)
+    }
+
+    fun removeArticles() {
+        var saved: Any? = null
+        if (mDataList[0].data is List<*>) saved = mDataList[0]
+        mDataList.clear()
+        saved?.let { mDataList.add(Wrapper(it, TYPE_BANNER)) }
+    }
+
     internal data class Wrapper(var data: Any, var type: Int)
 
     companion object {

@@ -11,6 +11,7 @@ data class OutestDataBean(var data: DataBean) : BaseBean()
 data class DataBean(var curPage: Int, var datas: List<ArticleBean>): Serializable
 data class ArticleBean(
     var author: String?,
+    var shareUser: String?,
     var chapterName: String?, // 右上角描述小标签
     var title: String?, // 标题
     var fresh: Boolean?, // 右上角新帖小标签

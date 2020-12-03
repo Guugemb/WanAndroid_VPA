@@ -1,5 +1,6 @@
 package com.example.wanandroid_vpa.home.adapter
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.example.wanandroid_vpa.R
 import com.example.wanandroid_vpa.home.adapter.HomeBannerAdapter2.BannerFragment.Companion.BANNER_BEAN
 import com.example.wanandroid_vpa.home.bean.BannerBeanWrapper.BannerBean
+import com.example.wanandroid_vpa.network.WebActivity
 
 /**
  * Created by geegumb on 2020/12/2
@@ -51,8 +53,14 @@ class HomeBannerAdapter2(manager: FragmentManager) : FragmentStatePagerAdapter(m
 
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
-            val imagePath = (arguments?.get(BANNER_BEAN) as BannerBean).imagePath
-            Glide.with(view).load(imagePath).into(view as ImageView)
+            val bannerBean = arguments?.get(BANNER_BEAN) as BannerBean
+            Glide.with(view).load(bannerBean.imagePath).into(view as ImageView)
+            view.setOnClickListener {
+                val intent = Intent(view.context, WebActivity::class.java)
+                intent.putExtra(WebActivity.FLAG_WEB_TITLE, bannerBean.title)
+                intent.putExtra(WebActivity.FLAG_WEB_LINK, bannerBean.url)
+                view.context.startActivity(intent)
+            }
         }
 
         companion object {

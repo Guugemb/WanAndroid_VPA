@@ -15,14 +15,14 @@ import kotlinx.coroutines.launch
 class HomeModel : ViewModel() {
     val mBannerBeanList = MutableLiveData<List<BannerBean>?>()
     val mArticleBeanList = MutableLiveData<List<ArticleBean>>()
-
+    var mCurrentArticlePage = 0
     private val mRepository = HomeRepository()
 
     fun requestBanner() {
         viewModelScope.launch { mBannerBeanList.value = mRepository.requestBanner() }
     }
 
-    fun requestArticle(page: Int) {
-        viewModelScope.launch { mArticleBeanList.value = mRepository.requestArticle(page) }
+    fun requestArticle() {
+        viewModelScope.launch { mArticleBeanList.value = mRepository.requestArticle(mCurrentArticlePage++) }
     }
 }

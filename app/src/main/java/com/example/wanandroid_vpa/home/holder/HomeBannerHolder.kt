@@ -1,15 +1,11 @@
 package com.example.wanandroid_vpa.home.holder
 
 import android.view.View
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearSnapHelper
-import androidx.recyclerview.widget.PagerSnapHelper
-import androidx.recyclerview.widget.RecyclerView
+import androidx.fragment.app.FragmentActivity
 import androidx.viewpager.widget.ViewPager
-import androidx.viewpager2.widget.ViewPager2
 import com.example.wanandroid_vpa.R
 import com.example.wanandroid_vpa.base.BaseHolder
-import com.example.wanandroid_vpa.home.adapter.HomeBannerAdapter
+import com.example.wanandroid_vpa.home.adapter.HomeBannerAdapter2
 import com.example.wanandroid_vpa.home.bean.BannerBeanWrapper.BannerBean
 
 /**
@@ -18,10 +14,11 @@ import com.example.wanandroid_vpa.home.bean.BannerBeanWrapper.BannerBean
  */
 class HomeBannerHolder(v: View): BaseHolder<Any>(v) {
 
-    private val mBannerAdapter = HomeBannerAdapter()
+    private val mBannerAdapter = HomeBannerAdapter2((v.context as FragmentActivity)
+        .supportFragmentManager)
 
     init {
-        v.findViewById<ViewPager2>(R.id.vpBanner).adapter = mBannerAdapter
+        v.findViewById<ViewPager>(R.id.vpBanner).adapter = mBannerAdapter
     }
     override fun bind(t: Any) {
         if (t is List<*>) {

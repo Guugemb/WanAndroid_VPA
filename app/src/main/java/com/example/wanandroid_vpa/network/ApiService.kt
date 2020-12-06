@@ -16,4 +16,7 @@ interface ApiService {
 
     @GET("article/list/{page}/json")
     suspend fun getHomeArticle(@Path("page") page: Int): OutestDataBean
+
+    @GET("/wenda/list/{page}/json")
+    suspend fun getQAList(@Path("page") page: Int): OutestDataBean
 }

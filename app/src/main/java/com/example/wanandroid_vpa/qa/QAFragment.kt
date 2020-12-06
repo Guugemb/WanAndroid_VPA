@@ -1,4 +1,4 @@
-package com.example.wanandroid_vpa.home.fragment
+package com.example.wanandroid_vpa.qa
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,17 +11,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wanandroid_vpa.R
 import com.example.wanandroid_vpa.ext.addOnLoadMoreListener
 import com.example.wanandroid_vpa.home.adapter.HomeRvAdapter
-import com.example.wanandroid_vpa.home.viewmodel.HomeModel
 import com.example.wanandroid_vpa.main.ui.MainActivity
 import kotlinx.android.synthetic.main.fragment_home.*
 
-/**
- * Created by geegumb on 2020/11/30
- *
- */
-class HomeFragment: Fragment() {
-
-    private lateinit var mViewModel: HomeModel
+class QAFragment : Fragment() {
+    private lateinit var mViewModel : QAViewModel
     private val mAdapter = HomeRvAdapter()
 
     override fun onCreateView(
@@ -33,29 +27,21 @@ class HomeFragment: Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
         recyclerview.adapter = mAdapter
         recyclerview.layoutManager = LinearLayoutManager(context)
-        recyclerview.addOnLoadMoreListener { mViewModel.requestArticle() }
+        recyclerview.addOnLoadMoreListener { requestData() }
         swipeRefreshView.setOnRefreshListener { refresh() }
 
-        mViewModel = ViewModelProvider(this).get(HomeModel::class.java)
-        mViewModel.mBannerBeanList.observe(this) {
-            mAdapter.addBanners(it)
-            (activity as MainActivity).showLoading(false)
-        }
-        mViewModel.mArticleBeanList.observe(this) {
+        mViewModel = ViewModelProvider(this).get(QAViewModel::class.java)
+        mViewModel.mQAList.observe(this) {
             mAdapter.addArticles(it)
-            (activity as MainActivity).showLoading(false)
         }
         requestData()
     }
 
     private fun refresh() {
-        mAdapter.removeBanners()
         mAdapter.removeArticles()
-        mViewModel.mCurrentArticlePage = 0
+        mViewModel.mCurrentPage = 0
         swipeRefreshView.isRefreshing = true
         (activity as MainActivity).showLoading(true)
         try {
@@ -69,11 +55,10 @@ class HomeFragment: Fragment() {
     }
 
     private fun requestData() {
-        mViewModel.requestBanner()
-        mViewModel.requestArticle()
+        mViewModel.requestQAList()
     }
 
     companion object {
-        fun newInstance() = HomeFragment()
+        fun newInstance() = QAFragment()
     }
 }

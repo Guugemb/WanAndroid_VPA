@@ -2,12 +2,15 @@ package com.example.wanandroid_vpa.main.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import com.example.wanandroid_vpa.main.adapter.MainPagerAdapter
 import com.example.wanandroid_vpa.R
 import com.example.wanandroid_vpa.home.fragment.HomeFragment
+import com.example.wanandroid_vpa.qa.QAFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import java.lang.IllegalStateException
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,27 +25,36 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initFragment() {
-        mFragments.addAll(listOf(HomeFragment.newInstance()))
+        mFragments.addAll(listOf(HomeFragment.newInstance(),
+            QAFragment.newInstance()))
         mPagerAdapter.addFragments(mFragments)
         vpMain.adapter = mPagerAdapter
         vpMain.isUserInputEnabled = false
     }
 
     private fun initView() {
-        radioGroup_bottom.setOnClickListener {
-            when (it.id) {
-                R.id.rbMainPage -> checkAndSwitch(R.id.rbMainPage, 0)
-                R.id.rbQA -> checkAndSwitch(R.id.rbQA, 1)
-                R.id.rbDiscover -> checkAndSwitch(R.id.rbDiscover, 2)
-                R.id.rbMine -> checkAndSwitch(R.id.rbMine, 3)
-            }
-        }
-        radioGroup_bottom.check(R.id.rbMainPage)
+        rbMainPage.setOnClickListener { checkAndSwitch(R.id.rbMainPage, 0) }
+        rbQA.setOnClickListener { checkAndSwitch(R.id.rbQA, 1) }
+        rbDiscover.setOnClickListener { checkAndSwitch(R.id.rbDiscover, 2) }
+        rbMine.setOnClickListener { checkAndSwitch(R.id.rbMine, 3) }
+        checkAndSwitch(R.id.rbMainPage, 0)
     }
 
     private fun checkAndSwitch(@IdRes tab: Int, position: Int) {
         radioGroup_bottom.check(tab)
-        vpMain.currentItem = position
+        vpMain.setCurrentItem(position, false)
+        tvTabName.text = when (position) {
+            0 -> resources.getText(R.string.mainPage)
+            1 -> resources.getText(R.string.qa)
+            2 -> resources.getText(R.string.discover)
+            3 -> resources.getText(R.string.mine)
+            else -> throw IllegalStateException("unresolved tab name")
+        }
+    }
+
+    fun showLoading(loading: Boolean) = when (loading) {
+        true -> progressBarMain.visibility = View.VISIBLE
+        false -> progressBarMain.visibility = View.INVISIBLE
     }
 
 }

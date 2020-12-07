@@ -7,6 +7,7 @@ import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import com.example.wanandroid_vpa.main.adapter.MainPagerAdapter
 import com.example.wanandroid_vpa.R
+import com.example.wanandroid_vpa.discover.DiscoverFragment
 import com.example.wanandroid_vpa.home.fragment.HomeFragment
 import com.example.wanandroid_vpa.qa.QAFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -25,8 +26,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initFragment() {
-        mFragments.addAll(listOf(HomeFragment.newInstance(),
-            QAFragment.newInstance()))
+        mFragments.apply {
+            add(HomeFragment.newInstance())
+            add(QAFragment.newInstance())
+            add(DiscoverFragment.newInstance())
+        }
         mPagerAdapter.addFragments(mFragments)
         vpMain.adapter = mPagerAdapter
         vpMain.isUserInputEnabled = false
@@ -43,13 +47,6 @@ class MainActivity : AppCompatActivity() {
     private fun checkAndSwitch(@IdRes tab: Int, position: Int) {
         radioGroup_bottom.check(tab)
         vpMain.setCurrentItem(position, false)
-        tvTabName.text = when (position) {
-            0 -> resources.getText(R.string.mainPage)
-            1 -> resources.getText(R.string.qa)
-            2 -> resources.getText(R.string.discover)
-            3 -> resources.getText(R.string.mine)
-            else -> throw IllegalStateException("unresolved tab name")
-        }
     }
 
     fun showLoading(loading: Boolean) = when (loading) {

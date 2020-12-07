@@ -39,6 +39,7 @@ class HomeFragment: Fragment() {
         recyclerview.layoutManager = LinearLayoutManager(context)
         recyclerview.addOnLoadMoreListener { mViewModel.requestArticle() }
         swipeRefreshView.setOnRefreshListener { refresh() }
+        tvTabName.text = context?.resources?.getText(R.string.mainPage)
 
         mViewModel = ViewModelProvider(this).get(HomeModel::class.java)
         mViewModel.mBannerBeanList.observe(this) {

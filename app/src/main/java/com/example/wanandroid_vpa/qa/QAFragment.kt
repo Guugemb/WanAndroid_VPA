@@ -31,6 +31,7 @@ class QAFragment : Fragment() {
         recyclerview.layoutManager = LinearLayoutManager(context)
         recyclerview.addOnLoadMoreListener { requestData() }
         swipeRefreshView.setOnRefreshListener { refresh() }
+        tvTabName.text = context?.resources?.getText(R.string.qa)
 
         mViewModel = ViewModelProvider(this).get(QAViewModel::class.java)
         mViewModel.mQAList.observe(this) {

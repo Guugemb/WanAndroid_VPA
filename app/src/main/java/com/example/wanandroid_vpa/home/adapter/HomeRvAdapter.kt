@@ -9,6 +9,7 @@ import com.example.wanandroid_vpa.home.bean.ArticleBean
 import com.example.wanandroid_vpa.home.bean.BannerBeanWrapper.BannerBean
 import com.example.wanandroid_vpa.home.holder.HomeArticleItemHolder
 import com.example.wanandroid_vpa.home.holder.HomeBannerHolder
+import com.example.wanandroid_vpa.home.holder.HomeFooterHolder
 import java.lang.IllegalStateException
 
 /**
@@ -26,10 +27,15 @@ class HomeRvAdapter: RecyclerView.Adapter<BaseHolder<Any>>() {
                     parent, false)
                 HomeBannerHolder(view)
             }
-            TYPE_ITEM_RECYCLER_VIEW -> {
+            TYPE_ITEM_ARTICLE_LIST -> {
                 val view = LayoutInflater.from(parent.context).inflate(R.layout.item_home_article_rcv,
                     parent, false)
                 HomeArticleItemHolder(view)
+            }
+            TYPE_FOOTER_LOADING -> {
+                val view = LayoutInflater.from(parent.context).inflate(R.layout.item_footer_loading,
+                    parent, false)
+                HomeFooterHolder(view)
             }
             else -> throw IllegalStateException("unsupported view type")
         }
@@ -55,9 +61,18 @@ class HomeRvAdapter: RecyclerView.Adapter<BaseHolder<Any>>() {
     }
 
     fun addArticles(articleList: List<ArticleBean>?) {
-        articleList?.forEach {
-            mDataList.add(Wrapper(it, TYPE_ITEM_RECYCLER_VIEW))
-        }.also { notifyDataSetChanged()}
+        if (articleList == null || articleList.isEmpty()) return
+        val footer = if (mDataList.size > 0 &&
+                getItemViewType(mDataList.size - 1) == TYPE_FOOTER_LOADING) {
+            mDataList.removeLast()
+        } else {
+            Wrapper(Any(), TYPE_FOOTER_LOADING)
+        }
+        articleList.forEach {
+            mDataList.add(Wrapper(it, TYPE_ITEM_ARTICLE_LIST))
+        }
+        mDataList.add(footer)
+        notifyDataSetChanged()
     }
 
     fun removeBanners() {
@@ -75,7 +90,8 @@ class HomeRvAdapter: RecyclerView.Adapter<BaseHolder<Any>>() {
 
     companion object {
         const val TYPE_BANNER = 0
-        const val TYPE_ITEM_RECYCLER_VIEW = 1
+        const val TYPE_ITEM_ARTICLE_LIST = 1
+        const val TYPE_FOOTER_LOADING = 2
     }
 
 }

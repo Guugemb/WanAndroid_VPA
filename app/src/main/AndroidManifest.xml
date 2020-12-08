@@ -23,6 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".network.WebActivity" />
+        <activity android:name=".discover.TreeItemDetailActivity" />
     </application>
 
 </manifest>

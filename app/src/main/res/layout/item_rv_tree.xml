@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/bg_item_tree"
+    android:textColor="@color/white"
+    android:layout_marginVertical="20dp"
+    android:layout_marginHorizontal="28dp"
+    android:paddingVertical="3dp"
+    android:paddingHorizontal="8dp"
+    android:textSize="20sp"
+    android:gravity="center"
+    tools:text="开发环境" />

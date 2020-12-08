@@ -31,7 +31,7 @@ class DiscoverFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mFragments.apply {
-            add(DiscoverStructureFragment.newInstance())
+            add(DiscoverTreeFragment.newInstance())
             add(DiscoverNavigationFragment.newInstance())
             add(DiscoverPublicAccountFragment.newInstance())
             add(DiscoverProjectFragment.newInstance())

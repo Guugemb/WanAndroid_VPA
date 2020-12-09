@@ -8,8 +8,14 @@ import androidx.multidex.MultiDex
  *
  */
 class MyApplication: Application() {
+
     override fun onCreate() {
         super.onCreate()
         MultiDex.install(this)
+        INSTANCE = this
+    }
+
+    companion object {
+        lateinit var INSTANCE: MyApplication
     }
 }

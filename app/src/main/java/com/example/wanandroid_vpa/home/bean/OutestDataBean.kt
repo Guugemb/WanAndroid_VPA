@@ -1,5 +1,7 @@
 package com.example.wanandroid_vpa.home.bean
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.example.wanandroid_vpa.base.BaseBean
 import java.io.Serializable
 
@@ -9,7 +11,10 @@ import java.io.Serializable
  */
 data class OutestDataBean(var data: DataBean) : BaseBean()
 data class DataBean(var curPage: Int, var datas: List<ArticleBean>): Serializable
+@Entity(tableName = "HomeArticle")
 data class ArticleBean(
+    @PrimaryKey
+    var id: Int,
     var author: String?,
     var shareUser: String?,
     var chapterName: String?, // 右上角描述小标签

@@ -1,7 +1,7 @@
 package com.example.wanandroid_vpa.home.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.wanandroid_vpa.base.BaseViewModel
 import com.example.wanandroid_vpa.home.bean.ArticleBean
@@ -25,6 +25,12 @@ class HomeModel : BaseViewModel() {
     }
 
     fun requestArticle() = viewModelScope.launch {
-        mArticleBeanList.value = mRepository.requestArticle(mCurrentPage++)
+        try {
+            mArticleBeanList.value = mRepository.readArticleFromDatabase()
+            mArticleBeanList.value = mRepository.requestArticleByNet(mCurrentPage++)
+        } catch (t: Throwable) {
+            Log.e("zhujin", "requestArticle: $t" )
+            t.printStackTrace()
+        }
     }
 }

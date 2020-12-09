@@ -49,9 +49,4 @@ class MainActivity : AppCompatActivity() {
         vpMain.setCurrentItem(position, false)
     }
 
-    fun showLoading(loading: Boolean) = when (loading) {
-        true -> progressBarMain.visibility = View.VISIBLE
-        false -> progressBarMain.visibility = View.INVISIBLE
-    }
-
 }

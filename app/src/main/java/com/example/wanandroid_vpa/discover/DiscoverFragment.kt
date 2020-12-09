@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.wanandroid_vpa.R
+import com.example.wanandroid_vpa.base.BaseFragment
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_discover.*
 
@@ -16,16 +17,12 @@ import kotlinx.android.synthetic.main.fragment_discover.*
  * Created by geegumb on 2020/12/7
  *
  */
-class DiscoverFragment : Fragment() {
+class DiscoverFragment : BaseFragment() {
     private val mFragments = arrayListOf<Fragment>()
     private val mTitles = arrayOf("体系", "导航", "公众号", "项目分类")
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_discover, container, false)
+    override fun getLayoutRes(): Int {
+        return R.layout.fragment_discover
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

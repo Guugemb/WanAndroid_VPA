@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.bumptech.glide.Glide
 import com.example.wanandroid_vpa.R
+import com.example.wanandroid_vpa.base.BaseFragment
 import com.example.wanandroid_vpa.home.adapter.HomeBannerAdapter2.BannerFragment.Companion.BANNER_BEAN
 import com.example.wanandroid_vpa.home.bean.BannerBeanWrapper.BannerBean
 import com.example.wanandroid_vpa.network.WebActivity
@@ -42,13 +43,10 @@ class HomeBannerAdapter2(manager: FragmentManager) : FragmentStatePagerAdapter(m
         }
     }
 
-    internal class BannerFragment : Fragment() {
-        override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
-        ): View? {
-            return inflater.inflate(R.layout.item_banner_home, container, false)
+    internal class BannerFragment : BaseFragment() {
+
+        override fun getLayoutRes(): Int {
+            return R.layout.item_banner_home
         }
 
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

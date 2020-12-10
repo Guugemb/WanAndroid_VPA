@@ -110,7 +110,9 @@ class SingleListAdapter : BaseAdapter<Any>() {
 
     override fun clear() {
         synchronized(mDataList) {
-            mDataList.clear()
+            mBanner = null
+            mArticleListFromCache.clear()
+            mArticleListFromNet.clear()
         }
     }
 

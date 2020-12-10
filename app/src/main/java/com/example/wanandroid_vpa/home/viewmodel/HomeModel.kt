@@ -1,8 +1,8 @@
 package com.example.wanandroid_vpa.home.viewmodel
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
 import com.example.wanandroid_vpa.base.BaseViewModel
+import com.example.wanandroid_vpa.base.launch
 import com.example.wanandroid_vpa.home.bean.ArticleBean
 import com.example.wanandroid_vpa.home.bean.BannerBeanWrapper.BannerBean
 import com.example.wanandroid_vpa.home.repository.HomeRepository
@@ -20,16 +20,16 @@ class HomeModel : BaseViewModel() {
 
     private val mRepository = HomeRepository()
 
-    fun requestBanner() = viewModelScope.launch {
+    private fun requestBanner() = launch(handler) {
         launch { mBannerBeanList.value = mRepository.requestBannerFromNet() }
         launch { mBannerBeanList.value = mRepository.readBannerFromDataBase() }
     }
 
-    fun requestArticleFromNet() = viewModelScope.launch {
+    fun requestArticleFromNet() = launch(handler) {
         mArticleBeanList.value = mRepository.requestArticleFromNet(mCurrentPage++)
     }
 
-    fun requestArticleFromCache() = viewModelScope.launch {
+    private fun requestArticleFromCache() = launch(handler) {
         mArticleBeanCacheList.value = mRepository.readArticleFromDatabase()
     }
 

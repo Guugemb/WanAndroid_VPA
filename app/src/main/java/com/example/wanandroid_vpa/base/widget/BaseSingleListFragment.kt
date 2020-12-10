@@ -35,13 +35,15 @@ abstract class BaseSingleListFragment<VM : BaseViewModel>(clazz: Class<VM>) :
 
     abstract fun requestData()
 
+    abstract fun onLoadMore()
+
     abstract fun getTabName(): CharSequence?
 
     @CallSuper
     protected fun initView() {
         recyclerview.layoutManager = LinearLayoutManager(context)
         recyclerview.adapter = mAdapter
-        recyclerview.addOnLoadMoreListener { requestData() }
+        recyclerview.addOnLoadMoreListener { onLoadMore() }
         swipeRefreshView.setOnRefreshListener { onRefresh() }
         tvTabName.text = getTabName()
     }

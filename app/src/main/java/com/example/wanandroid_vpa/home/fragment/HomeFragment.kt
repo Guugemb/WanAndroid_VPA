@@ -1,5 +1,6 @@
 package com.example.wanandroid_vpa.home.fragment
 
+import android.util.Log
 import com.example.wanandroid_vpa.R
 import com.example.wanandroid_vpa.base.widget.BaseSingleListFragment
 import com.example.wanandroid_vpa.home.viewmodel.HomeModel
@@ -12,8 +13,11 @@ import kotlinx.android.synthetic.main.fragment_singlelist.*
 class HomeFragment : BaseSingleListFragment<HomeModel>(HomeModel::class.java) {
 
     override fun requestData() {
-        mViewModel.requestBanner()
-        mViewModel.requestArticle()
+        mViewModel.requestData()
+    }
+
+    override fun onLoadMore() {
+        mViewModel.requestArticleFromNet()
     }
 
     override fun getTabName(): CharSequence? {
@@ -27,7 +31,11 @@ class HomeFragment : BaseSingleListFragment<HomeModel>(HomeModel::class.java) {
         })
         mViewModel.mArticleBeanList.observe(this, {
             swipeRefreshView.isRefreshing = false
-            mAdapter.addArticles(it)
+            mAdapter.addArticlesFromNet(it)
+        })
+        mViewModel.mArticleBeanCacheList.observe(this, {
+            swipeRefreshView.isRefreshing = false
+            mAdapter.addArticlesFromCache(it)
         })
     }
 

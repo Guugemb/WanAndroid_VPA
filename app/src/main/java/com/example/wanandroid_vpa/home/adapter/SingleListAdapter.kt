@@ -21,6 +21,9 @@ import java.util.*
 class SingleListAdapter : BaseAdapter<Any>() {
 
     private val mDataList = LinkedList<Wrapper>()
+    private var mBanner : List<BannerBean>? = null
+    private var mArticleListFromCache = LinkedList<ArticleBean>()
+    private var mArticleListFromNet = LinkedList<ArticleBean>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseHolder<Any> {
         return when (viewType) {
@@ -61,41 +64,41 @@ class SingleListAdapter : BaseAdapter<Any>() {
         return mDataList[position].type
     }
 
-    fun addBanners(banners: List<BannerBean>?) {
-        banners?.let {
-            synchronized(mDataList) { mDataList.add(0, Wrapper(it, TYPE_BANNER)) }
-            notifyDataSetChanged()
+    private fun combineData() {
+        mDataList.clear()
+        mBanner?.let { Wrapper(it, TYPE_BANNER) }?.let { mDataList.add(it) }
+        mArticleListFromCache.let { list ->
+            list.forEach { mDataList.add(Wrapper(it, TYPE_ITEM_ARTICLE_LIST)) }
         }
-    }
-
-    fun addArticles(articleList: List<ArticleBean>?) {
-        synchronized(mDataList) {
-            if (articleList == null || articleList.isEmpty()) return
-            val footer = if (mDataList.size > 0 &&
-                getItemViewType(mDataList.size - 1) == TYPE_FOOTER_LOADING
-            ) {
-                mDataList.removeLast()
-            } else {
-                Wrapper(Any(), TYPE_FOOTER_LOADING)
-            }
-            articleList.forEach {
-                mDataList.add(Wrapper(it, TYPE_ITEM_ARTICLE_LIST))
-            }
-            mDataList.add(footer)
+        mArticleListFromNet.let { list ->
+            list.forEach { mDataList.add(Wrapper(it, TYPE_ITEM_ARTICLE_LIST)) }
         }
+        mDataList.add(Wrapper(Any(), TYPE_FOOTER_LOADING))
         notifyDataSetChanged()
     }
 
-    private fun removeBanners() {
-        if (mDataList.size > 0 && mDataList[0].data is List<*>) mDataList.removeAt(0)
+    fun addBanners(banners: List<BannerBean>?) {
+        if (banners.isNullOrEmpty()) return
+        mBanner = banners
+        combineData()
     }
 
-    private fun removeArticles() {
-        var saved: Any? = null
-        if (mDataList.size > 0 && mDataList[0].data is List<*>) saved = mDataList[0]
-        mDataList.clear()
-        saved?.let { mDataList.add(Wrapper(it, TYPE_BANNER)) }
+    fun addArticlesFromNet(articleList: List<ArticleBean>?) {
+        synchronized(mArticleListFromNet) {
+            articleList?.let { mArticleListFromNet.addAll(it) }
+            mArticleListFromCache.clear()
+            combineData()
+        }
     }
+
+    fun addArticlesFromCache(articleList: List<ArticleBean>?) {
+        synchronized(mArticleListFromNet) {
+            if (mArticleListFromNet.isNotEmpty()) return
+            articleList?.let { mArticleListFromCache.addAll(articleList) }
+            combineData()
+        }
+    }
+
 
     internal data class Wrapper(var data: Any, var type: Int)
 
@@ -106,8 +109,9 @@ class SingleListAdapter : BaseAdapter<Any>() {
     }
 
     override fun clear() {
-        removeBanners()
-        removeArticles()
+        synchronized(mDataList) {
+            mDataList.clear()
+        }
     }
 
 }

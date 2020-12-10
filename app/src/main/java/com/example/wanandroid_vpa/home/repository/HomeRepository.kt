@@ -14,11 +14,23 @@ import kotlinx.coroutines.withContext
 class HomeRepository : BaseRepository() {
 
     // todo runSafe{ ... }
-    suspend fun requestBanner(): List<BannerBean>? = withContext(Dispatchers.IO) {
-        mApiService.getBanner()
-    }.data
+    suspend fun requestBannerFromNet(): List<BannerBean>?  {
+        val res = withContext(Dispatchers.IO) {
+            mApiService.getBanner()
+        }.data
+        writeBannerToDatabase(res)
+        return res
+    }
 
-    suspend fun requestArticleByNet(page: Int) : List<ArticleBean> {
+    private fun writeBannerToDatabase(list: List<BannerBean>?) {
+        list?.let { mDatabase.homeBannerDao.insert(it) }
+    }
+
+    fun readBannerFromDataBase() : List<BannerBean> {
+        return mDatabase.homeBannerDao.getBannerList()
+    }
+
+    suspend fun requestArticleFromNet(page: Int) : List<ArticleBean> {
         val res = withContext(Dispatchers.IO) {
             mApiService.getHomeArticle(page)
         }.data.datas

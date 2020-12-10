@@ -18,7 +18,7 @@ class TreeItemDetailFragment : BaseSingleListFragment<TreeItemDetailModel>
     override fun observe() =
         mViewModel.mDatas.observe(this, {
             swipeRefreshView.isRefreshing = false
-            mAdapter.addArticles(it)
+            mAdapter.addArticlesFromNet(it)
         })
 
     override fun getTabName(): CharSequence? {
@@ -27,6 +27,10 @@ class TreeItemDetailFragment : BaseSingleListFragment<TreeItemDetailModel>
 
     override fun requestData() {
         cid?.let { mViewModel.requestTreeItemDetail(it) }
+    }
+
+    override fun onLoadMore() {
+        requestData()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

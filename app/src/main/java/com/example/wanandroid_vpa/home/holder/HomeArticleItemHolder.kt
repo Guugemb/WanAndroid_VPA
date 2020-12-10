@@ -7,7 +7,6 @@ import com.example.wanandroid_vpa.R
 import com.example.wanandroid_vpa.base.BaseHolder
 import com.example.wanandroid_vpa.home.bean.ArticleBean
 import com.example.wanandroid_vpa.network.WebActivity
-import kotlinx.android.synthetic.main.item_home_article_rcv.view.*
 
 /**
  * Created by geegumb on 2020/11/30
@@ -18,7 +17,7 @@ class HomeArticleItemHolder(v: View) : BaseHolder<Any>(v) {
     override fun bind(t: Any) {
         if (t !is ArticleBean) return
         itemView.let{
-            it.findViewById<TextView>(R.id.tvTime).text = t.niceShareDate
+            it.findViewById<TextView>(R.id.tvTime).text = t.niceDate
             it.findViewById<TextView>(R.id.tvTitle).text = t.title
             it.findViewById<TextView>(R.id.tvAuthor).text = if (t.author.isNullOrEmpty()) {
                 t.shareUser

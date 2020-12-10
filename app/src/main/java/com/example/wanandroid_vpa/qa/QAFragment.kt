@@ -14,9 +14,13 @@ class QAFragment : BaseSingleListFragment<QAModel>(QAModel::class.java) {
         mViewModel.requestQAList()
     }
 
+    override fun onLoadMore() {
+        requestData()
+    }
+
     override fun observe() {
         mViewModel.mQAList.observe(this, Observer {
-            mAdapter.addArticles(it)
+            mAdapter.addArticlesFromNet(it)
         })
     }
 

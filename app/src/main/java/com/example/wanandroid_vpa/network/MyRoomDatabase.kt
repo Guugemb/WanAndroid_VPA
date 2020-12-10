@@ -5,15 +5,18 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.wanandroid_vpa.home.bean.ArticleBean
+import com.example.wanandroid_vpa.home.bean.BannerBeanWrapper
+import com.example.wanandroid_vpa.home.bean.BannerBeanWrapper.BannerBean
 
 /**
  * Created by geegumb on 2020/12/9
  *
  */
-@Database(entities = [ArticleBean::class], version = 1)
+@Database(entities = [ArticleBean::class, BannerBean::class], version = 2)
 abstract class MyRoomDatabase : RoomDatabase() {
 
     abstract val homeArticleDao: HomeArticleDao
+    abstract val homeBannerDao: HomeBannerDao
 
     companion object {
         @Volatile

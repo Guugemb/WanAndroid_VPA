@@ -21,7 +21,7 @@ data class ArticleBean(
     var title: String?, // 标题
     var fresh: Boolean?, // 右上角新帖小标签
     var link: String?, // 跳转链接
-    var niceShareDate: String?, // 发布时间
+    var niceDate: String?, // 发布时间
     var superChapterName: String?, // 右下角分类
     var collect: Boolean?, // 是否已经收藏
 ) : Serializable

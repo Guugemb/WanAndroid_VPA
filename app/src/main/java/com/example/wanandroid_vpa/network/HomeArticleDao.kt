@@ -2,7 +2,7 @@ package com.example.wanandroid_vpa.network
 
 import androidx.room.*
 import com.example.wanandroid_vpa.home.bean.ArticleBean
-import com.example.wanandroid_vpa.home.bean.BannerBeanWrapper.BannerBean
+import com.example.wanandroid_vpa.home.bean.BannerJsonWrapper.BannerBean
 
 /**
  * Created by geegumb on 2020/12/9

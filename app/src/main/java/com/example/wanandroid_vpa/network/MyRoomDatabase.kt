@@ -5,8 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.wanandroid_vpa.home.bean.ArticleBean
-import com.example.wanandroid_vpa.home.bean.BannerBeanWrapper
-import com.example.wanandroid_vpa.home.bean.BannerBeanWrapper.BannerBean
+import com.example.wanandroid_vpa.home.bean.BannerJsonWrapper.BannerBean
 
 /**
  * Created by geegumb on 2020/12/9

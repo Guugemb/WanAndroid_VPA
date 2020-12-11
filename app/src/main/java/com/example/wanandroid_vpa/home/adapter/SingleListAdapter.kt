@@ -2,12 +2,11 @@ package com.example.wanandroid_vpa.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
 import com.example.wanandroid_vpa.R
 import com.example.wanandroid_vpa.base.BaseAdapter
 import com.example.wanandroid_vpa.base.BaseHolder
 import com.example.wanandroid_vpa.home.bean.ArticleBean
-import com.example.wanandroid_vpa.home.bean.BannerBeanWrapper.BannerBean
+import com.example.wanandroid_vpa.home.bean.BannerJsonWrapper.BannerBean
 import com.example.wanandroid_vpa.home.holder.HomeArticleItemHolder
 import com.example.wanandroid_vpa.home.holder.HomeBannerHolder
 import com.example.wanandroid_vpa.home.holder.HomeFooterHolder

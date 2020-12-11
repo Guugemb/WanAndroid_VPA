@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.wanandroid_vpa.R
 import com.example.wanandroid_vpa.base.BaseHolder
-import com.example.wanandroid_vpa.home.bean.BannerBeanWrapper.BannerBean
+import com.example.wanandroid_vpa.home.bean.BannerJsonWrapper.BannerBean
 import com.example.wanandroid_vpa.home.adapter.HomeBannerAdapter.BannerHolder
 import com.example.wanandroid_vpa.util.ScreenUtils
 

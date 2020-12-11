@@ -9,8 +9,8 @@ import java.io.Serializable
  * Created by geegumb on 2020/12/1
  *
  */
-data class OutestDataBean(var data: DataBean) : BaseBean()
-data class DataBean(var curPage: Int, var datas: List<ArticleBean>): Serializable
+data class ArticleJsonWrapper(var data: ArticleJsonWrapper1) : BaseBean()
+data class ArticleJsonWrapper1(var curPage: Int, var datas: List<ArticleBean>): Serializable
 @Entity(tableName = "HomeArticle")
 data class ArticleBean(
     @PrimaryKey

@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.wanandroid_vpa.base.BaseViewModel
 import com.example.wanandroid_vpa.base.launch
 import com.example.wanandroid_vpa.home.bean.ArticleBean
-import com.example.wanandroid_vpa.home.bean.BannerBeanWrapper.BannerBean
+import com.example.wanandroid_vpa.home.bean.BannerJsonWrapper.BannerBean
 import com.example.wanandroid_vpa.home.repository.HomeRepository
 import kotlinx.coroutines.launch
 

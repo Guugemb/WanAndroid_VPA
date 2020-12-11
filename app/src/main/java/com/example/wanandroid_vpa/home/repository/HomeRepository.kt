@@ -2,8 +2,7 @@ package com.example.wanandroid_vpa.home.repository
 
 import com.example.wanandroid_vpa.base.BaseRepository
 import com.example.wanandroid_vpa.home.bean.ArticleBean
-import com.example.wanandroid_vpa.home.bean.BannerBeanWrapper.BannerBean
-import com.example.wanandroid_vpa.network.NetworkService
+import com.example.wanandroid_vpa.home.bean.BannerJsonWrapper.BannerBean
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

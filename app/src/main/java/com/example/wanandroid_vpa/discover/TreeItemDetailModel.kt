@@ -1,7 +1,6 @@
 package com.example.wanandroid_vpa.discover
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.wanandroid_vpa.base.BaseViewModel
 import com.example.wanandroid_vpa.home.bean.ArticleBean

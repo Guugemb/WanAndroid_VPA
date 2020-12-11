@@ -6,7 +6,7 @@ import androidx.viewpager.widget.ViewPager
 import com.example.wanandroid_vpa.R
 import com.example.wanandroid_vpa.base.BaseHolder
 import com.example.wanandroid_vpa.home.adapter.HomeBannerAdapter2
-import com.example.wanandroid_vpa.home.bean.BannerBeanWrapper.BannerBean
+import com.example.wanandroid_vpa.home.bean.BannerJsonWrapper.BannerBean
 
 /**
  * Created by geegumb on 2020/11/30

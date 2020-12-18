@@ -1,4 +1,4 @@
-package com.example.wanandroid_vpa.discover
+package com.example.wanandroid_vpa.discover.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wanandroid_vpa.R
 import com.example.wanandroid_vpa.base.BaseHolder
+import com.example.wanandroid_vpa.discover.bean.TreeIndexBean
 
 /**
  * Created by geegumb on 2020/12/8

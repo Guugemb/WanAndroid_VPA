@@ -2,16 +2,14 @@ package com.example.wanandroid_vpa.main.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import com.example.wanandroid_vpa.main.adapter.MainPagerAdapter
 import com.example.wanandroid_vpa.R
-import com.example.wanandroid_vpa.discover.DiscoverFragment
+import com.example.wanandroid_vpa.discover.fragment.DiscoverFragment
 import com.example.wanandroid_vpa.home.fragment.HomeFragment
 import com.example.wanandroid_vpa.qa.QAFragment
 import kotlinx.android.synthetic.main.activity_main.*
-import java.lang.IllegalStateException
 
 class MainActivity : AppCompatActivity() {
 

@@ -1,10 +1,9 @@
-package com.example.wanandroid_vpa.discover
+package com.example.wanandroid_vpa.discover.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import com.example.wanandroid_vpa.R
-import com.example.wanandroid_vpa.home.fragment.HomeFragment
+import com.example.wanandroid_vpa.discover.fragment.TreeItemDetailFragment
 
 /**
  * Created by geegumb on 2020/12/8

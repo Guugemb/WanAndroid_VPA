@@ -1,4 +1,4 @@
-package com.example.wanandroid_vpa.discover
+package com.example.wanandroid_vpa.discover.fragment
 
 import androidx.fragment.app.Fragment
 
@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
  * Created by geegumb on 2020/12/7
  *
  */
-class DiscoverNavigationFragment : Fragment(){
+class DiscoverProjectFragment : Fragment() {
     companion object {
         fun newInstance() = DiscoverNavigationFragment()
     }

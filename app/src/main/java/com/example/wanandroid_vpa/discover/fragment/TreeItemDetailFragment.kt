@@ -1,9 +1,10 @@
-package com.example.wanandroid_vpa.discover
+package com.example.wanandroid_vpa.discover.fragment
 
 import android.os.Bundle
 import com.example.wanandroid_vpa.base.widget.BaseSingleListFragment
-import com.example.wanandroid_vpa.discover.TreeItemDetailActivity.Companion.FLAG_CID
-import com.example.wanandroid_vpa.discover.TreeItemDetailActivity.Companion.FLAG_TITLE
+import com.example.wanandroid_vpa.discover.activity.TreeItemDetailActivity.Companion.FLAG_CID
+import com.example.wanandroid_vpa.discover.activity.TreeItemDetailActivity.Companion.FLAG_TITLE
+import com.example.wanandroid_vpa.discover.viewmodel.TreeItemDetailModel
 import kotlinx.android.synthetic.main.fragment_singlelist.*
 
 /**

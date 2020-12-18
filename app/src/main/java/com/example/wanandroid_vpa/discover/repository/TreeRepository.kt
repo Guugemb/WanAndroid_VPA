@@ -1,5 +1,6 @@
-package com.example.wanandroid_vpa.discover
+package com.example.wanandroid_vpa.discover.repository
 
+import com.example.wanandroid_vpa.discover.bean.TreeIndexBean
 import com.example.wanandroid_vpa.network.NetworkService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

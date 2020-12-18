@@ -15,7 +15,7 @@
             android:fitsSystemWindows="true"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:statusBarScrim="@color/colorTransparent">
-            <com.example.wanandroid_vpa.discover.TreeIndexRecyclerView
+            <com.example.wanandroid_vpa.discover.widget.TreeIndexRecyclerView
                 android:id="@+id/rcv_index"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>

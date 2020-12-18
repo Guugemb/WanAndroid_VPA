@@ -1,4 +1,4 @@
-package com.example.wanandroid_vpa.discover
+package com.example.wanandroid_vpa.discover.widget
 
 import android.content.Context
 import android.util.AttributeSet

@@ -1,4 +1,4 @@
-package com.example.wanandroid_vpa.discover
+package com.example.wanandroid_vpa.discover.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope

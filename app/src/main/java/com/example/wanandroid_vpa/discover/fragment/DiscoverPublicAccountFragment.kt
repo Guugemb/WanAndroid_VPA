@@ -1,4 +1,4 @@
-package com.example.wanandroid_vpa.discover
+package com.example.wanandroid_vpa.discover.fragment
 
 import androidx.fragment.app.Fragment
 

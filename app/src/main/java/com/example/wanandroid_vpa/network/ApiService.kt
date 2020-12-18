@@ -1,6 +1,6 @@
 package com.example.wanandroid_vpa.network
 
-import com.example.wanandroid_vpa.discover.TreeJsonWrapper
+import com.example.wanandroid_vpa.discover.bean.TreeJsonWrapper
 import com.example.wanandroid_vpa.home.bean.BannerJsonWrapper
 import com.example.wanandroid_vpa.home.bean.ArticleJsonWrapper
 import retrofit2.http.GET

@@ -1,5 +1,6 @@
 package com.example.wanandroid_vpa.network
 
+import com.example.wanandroid_vpa.discover.bean.NavigationWrapper
 import com.example.wanandroid_vpa.discover.bean.TreeJsonWrapper
 import com.example.wanandroid_vpa.home.bean.BannerJsonWrapper
 import com.example.wanandroid_vpa.home.bean.ArticleJsonWrapper
@@ -25,9 +26,21 @@ interface ApiService {
     @GET("/tree/json")
     suspend fun getTreeList(): TreeJsonWrapper
 
-    @GET("article/list/{page}/json")
+    @GET("/article/list/{page}/json")
     suspend fun getTreeItemDetail(
         @Path("page") page: Int,
         @Query("cid") cid: Int
+    ): ArticleJsonWrapper
+
+    @GET("/navi/json")
+    suspend fun getNavigationList(): NavigationWrapper
+
+    @GET("/wxarticle/chapters/json")
+    suspend fun getPublicAccount(): TreeJsonWrapper
+
+    @GET("/wxarticle/list/{id}/{page}/json")
+    suspend fun getPublicAccountArticle(
+        @Path("id") id: Int,
+        @Path("page") page: Int
     ): ArticleJsonWrapper
 }

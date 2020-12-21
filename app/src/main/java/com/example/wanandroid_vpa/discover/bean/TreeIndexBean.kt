@@ -7,7 +7,8 @@ data class TreeJsonWrapper(val data: List<TreeIndexBean>) : BaseBean()
 data class TreeIndexBean(
     var name: String? = null,
     val children: List<TreeItemBean>,
-    var isSelected: Boolean = false
+    var isSelected: Boolean = false,
+    var id: Int
 )
 data class TreeItemBean(
     var name: String? = null,

@@ -23,6 +23,7 @@ class SingleListAdapter : BaseAdapter<Any>() {
     private var mBanner : List<BannerBean>? = null
     private var mArticleListFromCache = LinkedList<ArticleBean>()
     private var mArticleListFromNet = LinkedList<ArticleBean>()
+    private var mIncomeArticleSize = 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseHolder<Any> {
         return when (viewType) {
@@ -72,7 +73,8 @@ class SingleListAdapter : BaseAdapter<Any>() {
         mArticleListFromNet.let { list ->
             list.forEach { mDataList.add(Wrapper(it, TYPE_ITEM_ARTICLE_LIST)) }
         }
-        mDataList.add(Wrapper(Any(), TYPE_FOOTER_LOADING))
+        if (mIncomeArticleSize == 20)
+            mDataList.add(Wrapper(Any(), TYPE_FOOTER_LOADING))
         notifyDataSetChanged()
     }
 
@@ -84,7 +86,10 @@ class SingleListAdapter : BaseAdapter<Any>() {
 
     fun addArticlesFromNet(articleList: List<ArticleBean>?) {
         synchronized(mArticleListFromNet) {
-            articleList?.let { mArticleListFromNet.addAll(it) }
+            articleList?.let {
+                mArticleListFromNet.addAll(it)
+                mIncomeArticleSize = it.size
+            }
             mArticleListFromCache.clear()
             combineData()
         }
@@ -93,7 +98,10 @@ class SingleListAdapter : BaseAdapter<Any>() {
     fun addArticlesFromCache(articleList: List<ArticleBean>?) {
         synchronized(mArticleListFromNet) {
             if (mArticleListFromNet.isNotEmpty()) return
-            articleList?.let { mArticleListFromCache.addAll(articleList) }
+            articleList?.let {
+                mArticleListFromCache.addAll(articleList)
+                mIncomeArticleSize = it.size
+            }
             combineData()
         }
     }

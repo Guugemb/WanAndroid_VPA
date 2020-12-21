@@ -8,6 +8,6 @@ import androidx.fragment.app.Fragment
  */
 class DiscoverProjectFragment : Fragment() {
     companion object {
-        fun newInstance() = DiscoverNavigationFragment()
+        fun newInstance() = DiscoverProjectFragment()
     }
 }

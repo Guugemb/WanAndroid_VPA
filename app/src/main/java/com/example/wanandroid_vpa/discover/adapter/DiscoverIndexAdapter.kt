@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.wanandroid_vpa.R
 import com.example.wanandroid_vpa.base.BaseHolder
 import com.example.wanandroid_vpa.discover.bean.NavigationIndexBean
+import com.example.wanandroid_vpa.discover.bean.ProjectIndexBean
 import com.example.wanandroid_vpa.discover.bean.TreeIndexBean
 
 /**
@@ -47,6 +48,7 @@ class DiscoverIndexAdapter<T>(private val mCallBack: IndexClickCallBack<T>) :
             if (t != it) {
                 if (it is TreeIndexBean) it.isSelected = false
                 if (it is NavigationIndexBean) it.isSelected = false
+                if (it is ProjectIndexBean) it.isSelected = false
             }
         }
         notifyDataSetChanged()
@@ -68,6 +70,15 @@ class DiscoverIndexHolder<T>(v: View, private val callBack: IndexClickCallBack<T
                 }
             }
             is NavigationIndexBean -> {
+                (itemView as TextView).text = t.name
+                itemView.isSelected = t.isSelected
+                itemView.setOnClickListener {
+                    t.isSelected = !t.isSelected
+                    itemView.isSelected = t.isSelected
+                    callBack.onIndexClick(t)
+                }
+            }
+            is ProjectIndexBean -> {
                 (itemView as TextView).text = t.name
                 itemView.isSelected = t.isSelected
                 itemView.setOnClickListener {

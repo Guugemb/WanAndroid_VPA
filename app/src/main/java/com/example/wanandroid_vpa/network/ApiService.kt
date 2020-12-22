@@ -1,6 +1,8 @@
 package com.example.wanandroid_vpa.network
 
 import com.example.wanandroid_vpa.discover.bean.NavigationWrapper
+import com.example.wanandroid_vpa.discover.bean.ProjectIndexWrapper
+import com.example.wanandroid_vpa.discover.bean.ProjectItemWrapper
 import com.example.wanandroid_vpa.discover.bean.TreeJsonWrapper
 import com.example.wanandroid_vpa.home.bean.BannerJsonWrapper
 import com.example.wanandroid_vpa.home.bean.ArticleJsonWrapper
@@ -43,4 +45,13 @@ interface ApiService {
         @Path("id") id: Int,
         @Path("page") page: Int
     ): ArticleJsonWrapper
+
+    @GET("/project/tree/json")
+    suspend fun getProjectIndex(): ProjectIndexWrapper
+
+    @GET("/project/list/{page}/json")
+    suspend fun getProjectItem(
+        @Path("page")page: Int,
+        @Query("cid")cid: Int
+    ): ProjectItemWrapper
 }

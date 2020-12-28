@@ -23,23 +23,6 @@
                 android:layout_height="wrap_content"/>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white">
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="#6EC2CB"
-                android:layout_gravity="center_vertical"/>
-            <ImageView
-                android:id="@+id/iv_expend_index"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_gravity="center"
-                android:scaleType="fitXY"
-                android:src="@drawable/ic_index_expand" />
-        </FrameLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView

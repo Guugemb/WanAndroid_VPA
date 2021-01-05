@@ -24,6 +24,8 @@
         </activity>
         <activity android:name=".network.WebActivity" />
         <activity android:name=".discover.activity.TreeItemDetailActivity" />
+        <activity android:name=".discover.activity.QRCodeTestActivity"
+            android:theme="@style/Theme.notAnimation"/>
     </application>
 
 </manifest>

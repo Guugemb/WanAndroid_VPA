@@ -34,4 +34,10 @@ object ScreenUtils {
         wm.defaultDisplay.getMetrics(outMetrics)
         return outMetrics.heightPixels
     }
+
+    fun getStatusBarHeight(context: Context): Int {
+        val resources = context.resources
+        val resourceId: Int = resources.getIdentifier("status_bar_height", "dimen", "android")
+        return resources.getDimensionPixelSize(resourceId)
+    }
 }

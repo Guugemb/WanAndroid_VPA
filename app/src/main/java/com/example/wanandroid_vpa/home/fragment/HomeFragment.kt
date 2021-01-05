@@ -1,6 +1,7 @@
 package com.example.wanandroid_vpa.home.fragment
 
 import android.util.Log
+import androidx.lifecycle.observe
 import com.example.wanandroid_vpa.R
 import com.example.wanandroid_vpa.base.widget.BaseSingleListFragment
 import com.example.wanandroid_vpa.home.viewmodel.HomeModel
@@ -25,18 +26,18 @@ class HomeFragment : BaseSingleListFragment<HomeModel>(HomeModel::class.java) {
     }
 
     override fun observe() {
-        mViewModel.mBannerBeanList.observe(this, {
+        mViewModel.mBannerBeanList.observe(this) {
             swipeRefreshView.isRefreshing = false
             mAdapter.addBanners(it)
-        })
-        mViewModel.mArticleBeanList.observe(this, {
+        }
+        mViewModel.mArticleBeanList.observe(this) {
             swipeRefreshView.isRefreshing = false
             mAdapter.addArticlesFromNet(it)
-        })
-        mViewModel.mArticleBeanCacheList.observe(this, {
+        }
+        mViewModel.mArticleBeanCacheList.observe(this) {
             swipeRefreshView.isRefreshing = false
             mAdapter.addArticlesFromCache(it)
-        })
+        }
     }
 
     companion object {

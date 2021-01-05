@@ -1,6 +1,7 @@
 package com.example.wanandroid_vpa.discover.adapter
 
 import android.content.Intent
+import android.graphics.drawable.BitmapDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,8 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.wanandroid_vpa.R
 import com.example.wanandroid_vpa.base.BaseHolder
+import com.example.wanandroid_vpa.discover.activity.QRCodeTestActivity
 import com.example.wanandroid_vpa.discover.bean.ProjectItemBean
-import com.example.wanandroid_vpa.network.WebActivity
+
 
 /**
  * Created by geegumb on 2020/12/22
@@ -59,11 +61,17 @@ class ProjectItemHolder(v: View) : BaseHolder<ProjectItemBean>(v) {
         tvAuthor.text = t.author
         tvTime.text = t.niceDate
         Glide.with(ivCover).load(t.envelopePic).into(ivCover)
-        itemView.setOnClickListener {
-            val intent = Intent(itemView.context, WebActivity::class.java)
-            intent.putExtra(WebActivity.FLAG_WEB_LINK, t.link)
-                .putExtra(WebActivity.FLAG_WEB_TITLE, t.title)
-            itemView.context.startActivity(intent)
+        ivCover.setOnClickListener {
+            val intent = Intent(ivCover.context, QRCodeTestActivity::class.java)
+            val bitmap = (ivCover.drawable as BitmapDrawable).bitmap
+            intent.putExtra("QR_CODE", bitmap)
+            val info = IntArray(4)
+            info[0] = ivCover.left
+            info[1] = ivCover.top
+            info[2] = ivCover.right
+            info[3] = ivCover.bottom
+            intent.putExtra("ORIGINAL_VIEW_INFO", info)
+            ivCover.context.startActivity(intent)
         }
     }
 

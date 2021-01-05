@@ -2,6 +2,7 @@ package com.example.wanandroid_vpa.discover.fragment
 
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.wanandroid_vpa.R
